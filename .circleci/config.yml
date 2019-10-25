@@ -23,8 +23,8 @@ jobs:
           at: my_workspace
       - run: |
           data=cat my_workspace/file1
-          echo data
-          if [[ data == "Using new workspace" ]]; 
+          echo $data
+          if [[ $data == "Using new workspace" ]]; 
           then
             echo "It Worked";
           else
