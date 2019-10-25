@@ -22,8 +22,8 @@ jobs:
       - attach_workspace: 
           at: my_workspace
       - run: |
+          chmod a+rwx my_workspace/file1
           data=cat my_workspace/file1
-          echo $data
           if [[ $data == "Using new workspace" ]]; 
           then
             echo "It Worked";
