@@ -2,23 +2,39 @@ version: 2.0
 jobs: 
   One:
     docker:
-    - image: circleci/php
+    - image: circleci/node:4.8.2
     steps:
     - checkout 
     - run: echo "Job One !!!"
-        
+    - run: echo "Creating new workspace (new folder)"
+    - run: mkdir -p my_workspace 
+    - run: echo "Using new workspace" > my_workspace/file1
+    - persist_to_workspace: 
+      - root: my_workspace 
+      - paths: 
+         - file1
   Two:
     docker:
-    - image: circleci/php
+    - image: circleci/node:4.8.2
     steps:
     - checkout 
     - run: echo "Job Two !!!"
+    - attach_workspace: 
+        at: my_workspace
+    - run: | 
+        if [{cat $(my_workspace/file)=="Using new workspace"}]; then 
+           echo "It Worked" ;
+        else
+           echo "It didnt worked" ;
 
 workflows:
   version: 2  
   one_two:
     jobs:
      - One
-     - Two
+     - Two: 
+         require: 
+         - One 
+       
 
   
