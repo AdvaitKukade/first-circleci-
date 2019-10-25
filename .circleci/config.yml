@@ -22,7 +22,9 @@ jobs:
       - attach_workspace: 
           at: my_workspace
       - run: | 
-          if [sudo cat $(my_workspace/file1) == "Using new workspace"]; then
+          sudo apt-get update 
+          if [[cat $(/home/circleci/project/my_workspace
+/file1) == "Using new workspace"]]; then
             echo "It Worked";
           else
             echo "It didnt worked";
