@@ -23,13 +23,7 @@ jobs:
           at: my_workspace
       - run: |
           chmod a+rwx my_workspace/file1
-          data=cat my_workspace/file1
-          if [[ $data == "Using new workspace" ]]; 
-          then
-            echo "It Worked";
-          else
-            echo "It didnt worked";
-          fi  
+          ls -al 
 workflows:
   version: 2  
   one_two:
