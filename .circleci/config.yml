@@ -2,14 +2,14 @@ version: 2.0
 jobs: 
   One:
     docker:
-    - image: circleci/alpine
+    - image: circleci/php
     steps:
     - checkout 
     - run: echo "Job One !!!"
         
   Two:
     docker:
-    - image: circleci/alpine
+    - image: circleci/php
     steps:
     - checkout 
     - run: echo "Job Two !!!"
