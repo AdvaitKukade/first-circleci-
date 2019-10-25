@@ -1,9 +1,24 @@
 version: 2.0
 jobs: 
-  build:
+  One:
     docker:
-    - image: circleci/php
+    - image: circleci/alpine
     steps:
     - checkout 
-    - run: echo "A first Hello !!!"
+    - run: echo "Job One !!!"
         
+  Two:
+    docker:
+    - image: circleci/alpine
+    steps:
+    - checkout 
+    - run: echo "Job Two !!!"
+
+workflows:
+  version: 2  
+  one_two:
+    jobs:
+     - One
+     - Two
+
+  
