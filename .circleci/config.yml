@@ -22,7 +22,9 @@ jobs:
       - attach_workspace: 
           at: my_workspace
       - run: |
-          if [[ cat $(my_workspace/file1) == "Using new workspace" ]]; then
+          var1 = cat my_workspace/file1
+          if [[ var1 == "Using new workspace" ]]; 
+          then
             echo "It Worked";
           else
             echo "It didnt worked";
