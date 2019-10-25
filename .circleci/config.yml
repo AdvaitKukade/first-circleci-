@@ -21,8 +21,7 @@ jobs:
       - run: echo "Job Two !!!"
       - attach_workspace: 
           at: my_workspace
-      - run: | 
-          sudo apt-get update 
+      - run: |
           if [[ cat $(my_workspace/file1) == "Using new workspace" ]]; then
             echo "It Worked";
           else
